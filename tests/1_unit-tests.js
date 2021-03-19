@@ -77,23 +77,28 @@ test('#isBelow, #isAtLeast', function() {
   assert.isBelow(5 % 2, 2);
   assert.isBelow(2/3, 1);
 });
-    // #10
-    test('#approximately', function () {
-      assert.fail(weirdNumbers(0.5), 1, 0);
-      assert.fail(weirdNumbers(0.2), 1, 0);
-    });
-  });
+/** 10 - .approximately **/
+// .approximately(actual, expected, range, [message])
+// actual = expected +/- range
+// Choose the minimum range (3rd parameter) to make the test always pass
+// it should be less than 1
+test('#approximately', function() {
+  assert.approximately(weirdNumbers(0.5) , 1, /*edit this*/ 0.5 );
+  assert.approximately(weirdNumbers(0.2) , 1, /*edit this*/ 0.8 );
+});
+
+});
 
   // -----------------------------------------------------------------------------
 
   const winterMonths = ['dec,', 'jan', 'feb', 'mar'];
   const backendLanguages = ['php', 'python', 'javascript', 'ruby', 'asp'];
   suite('Arrays', function () {
-    // #11
-    test('#isArray, #isNotArray', function () {
-      assert.fail('isThisAnArray?'.split(''), 'String.prototype.split() returns an Array');
-      assert.fail([1, 2, 3].indexOf(2), 'indexOf returns a number.');
-    });
+/** 11 - #isArray vs #isNotArray **/
+test('#isArray, #isNotArray', function() {
+  assert.isArray('isThisAnArray?'.split(''), 'String.prototype.split() returns an Array');
+  assert.isNotArray([1,2,3].indexOf(2), 'indexOf returns a number.');
+});
     // #12
     test('Array #include, #notInclude', function () {
       assert.fail(winterMonths, 'jul', "It's summer in july...");
