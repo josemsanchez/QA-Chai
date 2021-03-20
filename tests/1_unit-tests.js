@@ -99,12 +99,13 @@ test('#isArray, #isNotArray', function() {
   assert.isArray('isThisAnArray?'.split(''), 'String.prototype.split() returns an Array');
   assert.isNotArray([1,2,3].indexOf(2), 'indexOf returns a number.');
 });
-    // #12
-    test('Array #include, #notInclude', function () {
-      assert.fail(winterMonths, 'jul', "It's summer in july...");
-      assert.fail(backendLanguages, 'javascript', 'JS is a backend language !!');
-    });
-  });
+/** 12 - #include vs #notInclude **/
+test('Array #include, #notInclude', function() {
+  assert.notInclude(winterMonths, 'jul', "It's summer in july...");
+  assert.include(backendLanguages, 'javascript', 'JS is a backend language !!');
+});
+  
+});
 
   // -----------------------------------------------------------------------------
 
